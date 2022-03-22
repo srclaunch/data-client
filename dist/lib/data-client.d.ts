@@ -1,4 +1,3 @@
-import AWS from 'aws-sdk';
 import { Condition } from '@srclaunch/types';
 import { Sequelize, Model, ModelStatic } from 'sequelize';
 export declare type DataClientConnectionOptions = {
@@ -33,7 +32,6 @@ export declare class DataClient {
     models: Record<string, (sequelize: Sequelize) => SequelizeModel>;
     client?: Sequelize;
     constructor(config: DataClientOptions);
-    getDbCluster(): Promise<AWS.RDS.DBCluster | void>;
     getClient(): Promise<Sequelize | void>;
     connect({ alter, force, }: {
         alter?: boolean;

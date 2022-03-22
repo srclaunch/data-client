@@ -1,15 +1,8 @@
-// import Logger from '@srclaunch/logger';
-import { getParameters } from '@srclaunch/secrets';
-// import { getEnvironment } from '@srclaunch/utils';
-import AWS from 'aws-sdk';
-// import { ParameterList } from 'aws-sdk/clients/ssm';
+
 import { Condition} from '@srclaunch/types';
 import { DataTypes, Sequelize, Model, ModelStatic } from 'sequelize';
 import { singular } from 'pluralize';
 import { pascalCase } from 'change-case';
-// import tunnel from 'tunnel-ssh';
-
-// const logger = Logger();
 
 export type DataClientConnectionOptions = {
   bastion?: {
@@ -52,54 +45,26 @@ export class DataClient {
     this.models = config.models;
   }
 
-  async getDbCluster(): Promise<AWS.RDS.DBCluster | void> {
-    const clusters = await getParameters([
-      `/app-lab-test/db/aurora-postgresql-cluster`,
-    ]);
-
-    if (!clusters) return;
-
-    const params = {
-      DBClusterIdentifier: clusters?.[0]?.Value,
-    };
-
-    const rds = new AWS.RDS();
-
-    const describeResult = await rds.describeDBClusters(params).promise();
-    const cluster = describeResult.DBClusters?.[0];
-
-    if (cluster) {
-      this.cluster = {
-        database: cluster.DatabaseName,
-        host: cluster.Endpoint,
-        password: this.connection?.password,
-        port: cluster.Port,
-        username: cluster.MasterUsername,
-      };
-
-      return cluster;
-    }
-  }
 
   async getClient(): Promise<Sequelize | void> {
     if (
-      !this.cluster ||
-      !this.cluster.database ||
-      !this.cluster.username ||
-      !this.cluster.password ||
-      !this.cluster.host
+      !this.connection?.database ||
+      !this.connection?.username ||
+      !this.connection?.password ||
+      !this.connection?.host ||
+      !this.connection?.port
     ) {
       return;
     }
 
     this.client = new Sequelize(
-      this.cluster.database,
-      this.cluster.username,
-      this.cluster.password,
+      this.connection.database,
+      this.connection.username,
+      this.connection.password,
       {
         dialect: 'postgres',
-        host: this.cluster.host,
-        port: this.cluster.port,
+        host: this.connection.host,
+        port: this.connection.port,
         ssl: true,
       },
     );
@@ -125,7 +90,6 @@ export class DataClient {
     alter?: boolean;
     force?: boolean;
   }): Promise<Sequelize | void> {
-    await this.getDbCluster();
     await this.getClient();
 
     if (this.cluster) {

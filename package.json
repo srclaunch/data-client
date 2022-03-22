@@ -11,24 +11,26 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "./dist/index.es.js",
+  "type": "module",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "package.json",
     "dist"
   ],
-  "module": "./dist/index.es.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs.js"
     }
   },
   "scripts": {
+    "build:applab": "yarn applab build",
     "build:cjs": "esbuild --sourcemap --bundle --external:'sequelize' --external:'@srclaunch/logger' --external:'aws-sdk' --outfile=dist/index.cjs.js --format=cjs --platform=node src/index.ts",
     "build:es": "esbuild --sourcemap --bundle --external:'sequelize' --external:'@srclaunch/logger' --external:'aws-sdk' --outfile=dist/index.es.js --format=esm --platform=node src/index.ts",
     "build:types": "tsc --build --force",
-    "build": "yarn clean && yarn build:cjs && yarn build:es && yarn build:types",
+    "build": "yarn clean && yarn build:applab && yarn build:types",
     "clean": "rm -fr ./dist",
     "lint:eslint": "yarn eslint ./src --ext js,ts,tsx --max-warnings 0",
     "lint:stylelint": "yarn stylelint '**/*.ts[x]'",
@@ -47,14 +49,17 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@srclaunch/dx": "^0.1.2",
-    "@srclaunch/types": "^0.1.2",
+    "@srclaunch/cli": "^0.1.18",
+    "@srclaunch/dx": "^0.1.15",
+    "@srclaunch/types": "^0.1.21",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.15",
     "@types/pg": "^8",
+    "@types/pluralize": "^0.0.29",
     "@types/tunnel-ssh": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
+    "ava": "^4.1.0",
     "esbuild": "^0.14.19",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
@@ -81,13 +86,14 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-order": "^5.0.0",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.5"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.8.6"
   },
   "dependencies": {
-    "@srclaunch/exceptions": "^0.1.2",
+    "@srclaunch/exceptions": "^0.1.6",
     "@srclaunch/logger": "^0.1.2",
-    "@srclaunch/node-environment": "^0.1.2",
+    "@srclaunch/node-environment": "^0.1.4",
     "@srclaunch/secrets": "^0.1.2",
     "aws-sdk": "^2.1069.0",
     "change-case": "^4.1.2",

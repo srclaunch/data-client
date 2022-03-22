@@ -1,16 +1,15 @@
 {
   "extends": "@srclaunch/dx/tsconfig.json",
   "compilerOptions": {
+    "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
     "rootDir": "./src",
     "skipLibCheck": true,
-    "types": ["node", "vite/client"]
+    "types": ["node"]
   },
   "exclude": [
-    "src/__tests__",
-    "*/dist/operators.ts",
-    "*/dist/errors/validation-error.ts"
+    "src/tests",
   ],
   "include": ["src"]
 }
