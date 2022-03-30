@@ -31,7 +31,7 @@
     "clean": "rm -fr ./dist",
     "git:push": "git push --follow-tags origin main",
     "release": "yarn version:patch && yarn git:push",
-    "test": "echo 0",
+    "test": "ava",
     "version:patch": "standard-version",
     "yui": "yarn upgrade-interactive"
   },
