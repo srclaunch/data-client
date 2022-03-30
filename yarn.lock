@@ -1429,7 +1429,6 @@ __metadata:
     "@srclaunch/exceptions": ^0.1.16
     "@srclaunch/logger": ^0.1.8
     "@srclaunch/node-environment": ^0.1.4
-    "@srclaunch/secrets": ^0.1.2
     "@srclaunch/types": ^0.1.23
     "@types/jest": ^27.4.1
     "@types/node": ^17.0.23
@@ -1485,7 +1484,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.16, @srclaunch/exceptions@npm:^0.1.2, @srclaunch/exceptions@npm:^0.1.6":
+"@srclaunch/exceptions@npm:^0.1.16, @srclaunch/exceptions@npm:^0.1.6":
   version: 0.1.16
   resolution: "@srclaunch/exceptions@npm:0.1.16"
   dependencies:
@@ -1497,7 +1496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/logger@npm:^0.1.2, @srclaunch/logger@npm:^0.1.8":
+"@srclaunch/logger@npm:^0.1.8":
   version: 0.1.8
   resolution: "@srclaunch/logger@npm:0.1.8"
   dependencies:
@@ -1514,17 +1513,6 @@ __metadata:
   version: 0.1.4
   resolution: "@srclaunch/node-environment@npm:0.1.4"
   checksum: bc7b255a2e4d566201cd6c3b991389b3a4c1ab239f2dc3d10618b754769dcb357f594212fd1ffa0f7468720c146239848f47017e35b71840a71e6742ee164e8f
-  languageName: node
-  linkType: hard
-
-"@srclaunch/secrets@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@srclaunch/secrets@npm:0.1.2"
-  dependencies:
-    "@srclaunch/exceptions": ^0.1.2
-    "@srclaunch/logger": ^0.1.2
-    aws-sdk: ^2.1069.0
-  checksum: 75ae8b4a940010b9321abeb16ad20ae616da0e5b0273b8547cdbb059aa0de4bbc0f72aa82180cd1d12729a7764d866b87b05e436ff392afa287162994314ec48
   languageName: node
   linkType: hard
 
@@ -2340,7 +2328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1069.0, aws-sdk@npm:^2.1103.0":
+"aws-sdk@npm:^2.1103.0":
   version: 2.1103.0
   resolution: "aws-sdk@npm:2.1103.0"
   dependencies:
