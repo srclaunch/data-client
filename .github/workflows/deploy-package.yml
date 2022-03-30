@@ -16,12 +16,22 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Allow private package registry access
+        id: allow-private-package-registry-access
+        run: |
+          echo "nodeLinker: node-modules" > ./.yarnrc.yml
+          echo "npmScopes:" >> ./.yarnrc.yml
+          echo "  ${{ github.event.repository.owner.login }}:" >> ./.yarnrc.yml
+          echo "    npmRegistryServer: https://registry.npmjs.org" >> ./.yarnrc.yml
+          echo "    npmAlwaysAuth: true" >> ./.yarnrc.yml
+          echo "    npmAuthToken: ${{ secrets.NPM_ACCESS_TOKEN }}" >> ./.yarnrc.yml
+
       - name: Install dependencies
         run: yarn install
 
       - name: Run tests script
         run: yarn test
-        
+
   package:
     name: Deploy package
     runs-on: ubuntu-latest
@@ -35,6 +45,16 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Allow private package registry access
+        id: allow-private-package-registry-access
+        run: |
+          echo "nodeLinker: node-modules" > ./.yarnrc.yml
+          echo "npmScopes:" >> ./.yarnrc.yml
+          echo "  ${{ github.event.repository.owner.login }}:" >> ./.yarnrc.yml
+          echo "    npmRegistryServer: https://registry.npmjs.org" >> ./.yarnrc.yml
+          echo "    npmAlwaysAuth: true" >> ./.yarnrc.yml
+          echo "    npmAuthToken: ${{ secrets.NPM_ACCESS_TOKEN }}" >> ./.yarnrc.yml
+
       - name: Enable corepack
         run: corepack enable
 
@@ -46,15 +66,6 @@ jobs:
 
       - name: Build package
         run: yarn build
-
-      - name: Allow private package registry access
-        id: allow-private-package-registry-access
-        run: |
-          echo "npmScopes:" > ./.yarnrc.yml
-          echo "  ${{ github.event.repository.owner.login }}:" >> ./.yarnrc.yml
-          echo "    npmRegistryServer: https://registry.npmjs.org" >> ./.yarnrc.yml
-          echo "    npmAlwaysAuth: true" >> ./.yarnrc.yml
-          echo "    npmAuthToken: ${{ secrets.NPM_ACCESS_TOKEN }}" >> ./.yarnrc.yml
 
       - name: Publish package to NPM
         run: yarn npm publish
