@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/srclaunch/data-client/compare/v0.1.4...v0.1.5) (2022-03-30)
+
 ### 0.1.4 (2022-03-22)
 
 ### [0.0.40](https://github.com/srclaunch/data/compare/v0.0.39...v0.0.40) (2021-07-29)
