@@ -10,7 +10,7 @@
       "excludeLibs": [],
       "format": "esm",
       "inputScripts": ["src/index.ts"],
-      "minify": true,
+      "minify": false,
       "platform": "node",
       "sourceMap": true,
       "target": "esnext",
