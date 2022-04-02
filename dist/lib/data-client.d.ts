@@ -1,5 +1,6 @@
-import { Condition } from '@srclaunch/types';
+import { Condition, Environment } from '@srclaunch/types';
 import { Sequelize, Model, ModelStatic } from 'sequelize';
+import { Logger } from '@srclaunch/logger';
 export declare type DataClientConnectionOptions = {
     bastion?: {
         host?: string;
@@ -17,6 +18,8 @@ export declare type SequelizeModel = {
 } & ModelStatic<Model<any, any>>;
 export declare type DataClientOptions = {
     connection: DataClientConnectionOptions;
+    environment: Environment;
+    logger?: Logger;
     models: Record<string, (sequelize: Sequelize) => SequelizeModel>;
 };
 export declare class DataClient {
@@ -29,6 +32,7 @@ export declare class DataClient {
         username?: string;
     };
     connection?: DataClientConnectionOptions;
+    logger: Logger;
     models: Record<string, (sequelize: Sequelize) => SequelizeModel>;
     client?: Sequelize;
     constructor(config: DataClientOptions);
