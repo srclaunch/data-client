@@ -1426,8 +1426,8 @@ __metadata:
     "@babel/preset-typescript": ^7.16.7
     "@srclaunch/cli": ^0.1.92
     "@srclaunch/dx": ^0.1.18
-    "@srclaunch/exceptions": ^0.1.39
-    "@srclaunch/logger": ^0.1.36
+    "@srclaunch/exceptions": ^0.1.40
+    "@srclaunch/logger": ^0.1.39
     "@srclaunch/node-environment": ^0.1.8
     "@srclaunch/types": ^0.1.28
     "@types/jest": ^27.4.1
@@ -1493,15 +1493,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.39":
-  version: 0.1.39
-  resolution: "@srclaunch/exceptions@npm:0.1.39"
+"@srclaunch/exceptions@npm:^0.1.40":
+  version: 0.1.40
+  resolution: "@srclaunch/exceptions@npm:0.1.40"
   dependencies:
-    "@srclaunch/logger": ^0.1.36
+    "@srclaunch/logger": ^0.1.39
     luxon: ^2.3.1
     nanoid: ^3.3.2
     serialize-error: ^9.1.1
-  checksum: afa9e10069a93792f85767312c5d9e391d102a91c0fdb68916a0bcb33b968cd1fda32a101090929223f6994cf71c651f906673f95ad80a949112a920b7467c26
+  checksum: 4a104ae53c0c4c1a3ac76936ff68a979920b047dbe1e542ce51b8d23ce38953958c08ddfbb6a97200f7f1ad8df59460cdcde5e07a9e066980994862c99a4632e
   languageName: node
   linkType: hard
 
@@ -1516,14 +1516,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/logger@npm:^0.1.36":
-  version: 0.1.36
-  resolution: "@srclaunch/logger@npm:0.1.36"
+"@srclaunch/logger@npm:^0.1.39":
+  version: 0.1.39
+  resolution: "@srclaunch/logger@npm:0.1.39"
   dependencies:
     chalk: ^5.0.1
     luxon: ^2.3.1
     nanoid: ^3.3.2
-  checksum: ea5d910cbafdcb45151e1a66d1946e608834dc153929fe74085a06f3900fac566d367e4ed1675d99985906c3f194f2aa4d0531d794aa32a22770891820d7f134
+  checksum: c5c6bd6c9bd929f8dd640ffe307a36d5a76efc98be05c894db5b55e6836344fae6e4ac0b1fbb44c52dc93d8e53b53ba823f3af9ee42e6f70b91b597d3348b439
   languageName: node
   linkType: hard
 
