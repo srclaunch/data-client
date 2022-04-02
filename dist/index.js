@@ -7031,7 +7031,7 @@ var Ki2 = class {
     return console.error(s.message), s;
   }
   http({ request: n, response: i }) {
-    let { method: e, resource: u, details: s } = n ?? {}, { status: t, details: r } = i ?? {}, o = this.getCommonProps(), l = { ...o, message: `[${k.blue(o.created)}] ${k.bold.hex("#ffcc00")(s?.id ? `<${s.id}> ` : "?")}${k.yellowBright(`HTTP ${t?.code}`)} ${k.yellow(`${e?.toUpperCase()} ${u} - ${r?.duration ?? "?"}ms`)}`.replace(/\n\s+/g, "") };
+    let { method: e, resource: u, details: s } = n ?? {}, { status: t, details: r } = i ?? {}, o = this.getCommonProps(), l = { ...o, message: `[${k.blue(o.created)}] ${k.bold.hex("#ffcc00")(`<${s?.id ?? "?"}> `)}${k.yellowBright(`HTTP ${t?.code}`)} ${k.yellow(`${e?.toUpperCase()} ${u} - ${r?.duration ?? "?"}ms`)}`.replace(/\n\s+/g, "") };
     return console.info(l.message), l;
   }
   info(n) {

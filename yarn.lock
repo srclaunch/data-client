@@ -1427,7 +1427,7 @@ __metadata:
     "@srclaunch/cli": ^0.1.92
     "@srclaunch/dx": ^0.1.18
     "@srclaunch/exceptions": ^0.1.40
-    "@srclaunch/logger": ^0.1.39
+    "@srclaunch/logger": ^0.1.40
     "@srclaunch/node-environment": ^0.1.8
     "@srclaunch/types": ^0.1.28
     "@types/jest": ^27.4.1
@@ -1524,6 +1524,17 @@ __metadata:
     luxon: ^2.3.1
     nanoid: ^3.3.2
   checksum: c5c6bd6c9bd929f8dd640ffe307a36d5a76efc98be05c894db5b55e6836344fae6e4ac0b1fbb44c52dc93d8e53b53ba823f3af9ee42e6f70b91b597d3348b439
+  languageName: node
+  linkType: hard
+
+"@srclaunch/logger@npm:^0.1.40":
+  version: 0.1.40
+  resolution: "@srclaunch/logger@npm:0.1.40"
+  dependencies:
+    chalk: ^5.0.1
+    luxon: ^2.3.1
+    nanoid: ^3.3.2
+  checksum: 41cbe3d63ed3e0380eafb0b6fff5290ae97faf4403c0096efd73e7ba86d97acff0a1d1e82fd7436b4db74e8dcf019b5cb5278ec8b1e7326ccc3cb1525b5166cc
   languageName: node
   linkType: hard
 
