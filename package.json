@@ -3,7 +3,7 @@
   "description": "Wrapper around Sequelize for basic CRUD operations",
   "author": "Steven Bennett <steven@srclaunch.com>",
   "license": "MIT",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "engines": {
     "node": ">=16"
   },
