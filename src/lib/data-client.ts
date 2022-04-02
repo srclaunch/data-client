@@ -6,15 +6,17 @@ import { Exception } from '@srclaunch/exceptions';
 import { Logger } from '@srclaunch/logger';
 
 export type DataClientConnectionOptions = {
-  bastion?: {
-    host?: string;
-    key?: string;
+  readonly alter?: boolean;
+  readonly bastion?: {
+    readonly host?: string;
+    readonly key?: string;
   };
-  database?: string;
-  host?: string;
-  port?: number;
-  username?: string;
-  password?: string;
+  readonly force?: boolean;
+  readonly database?: string;
+  readonly host?: string;
+  readonly port?: number;
+  readonly username?: string;
+  readonly password?: string;
 };
 
 export { Sequelize };
