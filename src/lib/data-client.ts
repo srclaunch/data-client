@@ -1,5 +1,4 @@
-
-import { Condition} from '@srclaunch/types';
+import { Condition } from '@srclaunch/types';
 import { DataTypes, Sequelize, Model, ModelStatic } from 'sequelize';
 import { singular } from 'pluralize';
 import { pascalCase } from 'change-case';
@@ -44,7 +43,6 @@ export class DataClient {
     this.connection = config.connection;
     this.models = config.models;
   }
-
 
   async getClient(): Promise<Sequelize | void> {
     if (
@@ -99,7 +97,6 @@ export class DataClient {
         } catch (err: any) {
           console.error(err);
         }
-
       } else {
         // const config = {
         //   dstHost: cluster.Endpoint,
@@ -128,7 +125,10 @@ export class DataClient {
     }
   }
 
-  async create(model: string, data?: Record<string, any>): Promise<Model<any, any> | Model<any, any>[] | void> {
+  async create(
+    model: string,
+    data?: Record<string, any>,
+  ): Promise<Model<any, any> | Model<any, any>[] | void> {
     let modelName = '';
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
@@ -145,8 +145,10 @@ export class DataClient {
     }
   }
 
-
-  async deleteMany(model: string, ids: string[]): Promise<Model<any, any> | void> {
+  async deleteMany(
+    model: string,
+    ids: string[],
+  ): Promise<Model<any, any> | void> {
     let modelName = '';
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
@@ -179,8 +181,10 @@ export class DataClient {
     return result;
   }
 
-
-  async getOne(model: string, id: string): Promise<Model<any, any> | null | void> {
+  async getOne(
+    model: string,
+    id: string,
+  ): Promise<Model<any, any> | null | void> {
     let modelName = '';
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
@@ -193,12 +197,15 @@ export class DataClient {
     return this.db?.[modelName]?.findOne({ where: { id } });
   }
 
-  async getMany(model: string, props?: { 
-    conditions?: Condition[],
-    filters?: Record<string, any>,
-    limit?: number;
-    offset?: number
-  }): Promise<Model<any, any>[] | void> {
+  async getMany(
+    model: string,
+    props?: {
+      conditions?: Condition[];
+      filters?: Record<string, any>;
+      limit?: number;
+      offset?: number;
+    },
+  ): Promise<Model<any, any>[] | void> {
     let modelName = '';
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
@@ -210,17 +217,20 @@ export class DataClient {
 
     console.log('filters', props?.filters);
     console.log('limit', props?.limit);
-    
+
     if (props?.filters) {
       return this.db?.[modelName]?.findAll({ where: props.filters });
     }
 
-    console.log('asdf')
+    console.log('asdf');
 
     return this.db?.[modelName]?.findAll();
   }
 
-  async updateMany(model: string, data: Record<string, any>[]): Promise<Model<any, any> | void> {
+  async updateMany(
+    model: string,
+    data: Record<string, any>[],
+  ): Promise<Model<any, any> | void> {
     let modelName = '';
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
@@ -235,13 +245,16 @@ export class DataClient {
     return result;
   }
 
-  async updateOne(model: string, id: string, data: Record<string, any>): Promise<Model<any, any> | void> {
+  async updateOne(
+    model: string,
+    id: string,
+    data: Record<string, any>,
+  ): Promise<Model<any, any> | void> {
     let modelName = '';
 
     Object.entries(this.db).forEach(([name, m]) => {
       if (name === singular(pascalCase(model))) modelName = name;
     });
-
 
     if (!modelName) return;
 
@@ -252,6 +265,5 @@ export class DataClient {
     await entity.update(data);
 
     return entity;
-
   }
 }

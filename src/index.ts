@@ -1,7 +1,7 @@
-export { DataClient } from './lib/data-client';
 export type {
-  DataClientOptions,
   DataClientConnectionOptions,
+  DataClientOptions,
   Sequelize,
   SequelizeModel,
 } from './lib/data-client';
+export { DataClient } from './lib/data-client';
