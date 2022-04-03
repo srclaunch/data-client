@@ -11,6 +11,7 @@ export type DataClientConnectionOptions = {
     readonly host?: string;
     readonly key?: string;
   };
+  readonly environment?: Environment;
   readonly force?: boolean;
   readonly database?: string;
   readonly host?: string;
@@ -42,17 +43,19 @@ export class DataClient {
     username?: string;
   };
   connection?: DataClientConnectionOptions;
+  environment: Environment;
   logger: Logger;
   models: Record<string, (sequelize: Sequelize) => SequelizeModel>;
   client?: Sequelize;
 
-  constructor(config: DataClientOptions) {
-    this.connection = config.connection;
-    this.models = config.models;
+  constructor({ connection, environment, logger, models }: DataClientOptions) {
+    this.connection = connection;
+    this.environment = environment;
+    this.models = models;
     this.logger =
-      config.logger ??
+      logger ??
       new Logger({
-        environment: config.environment,
+        environment,
       });
   }
 

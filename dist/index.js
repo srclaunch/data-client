@@ -7054,14 +7054,16 @@ var DataClient = class {
   db = {};
   cluster;
   connection;
+  environment;
   logger;
   models;
   client;
-  constructor(config) {
-    this.connection = config.connection;
-    this.models = config.models;
-    this.logger = config.logger ?? new Ki2({
-      environment: config.environment
+  constructor({ connection, environment, logger, models }) {
+    this.connection = connection;
+    this.environment = environment;
+    this.models = models;
+    this.logger = logger ?? new Ki2({
+      environment
     });
   }
   async getClient() {

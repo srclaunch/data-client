@@ -7,6 +7,7 @@ export declare type DataClientConnectionOptions = {
         readonly host?: string;
         readonly key?: string;
     };
+    readonly environment?: Environment;
     readonly force?: boolean;
     readonly database?: string;
     readonly host?: string;
@@ -34,10 +35,11 @@ export declare class DataClient {
         username?: string;
     };
     connection?: DataClientConnectionOptions;
+    environment: Environment;
     logger: Logger;
     models: Record<string, (sequelize: Sequelize) => SequelizeModel>;
     client?: Sequelize;
-    constructor(config: DataClientOptions);
+    constructor({ connection, environment, logger, models }: DataClientOptions);
     getClient(): Promise<Sequelize | void>;
     connect({ alter, force, }: {
         alter?: boolean;
